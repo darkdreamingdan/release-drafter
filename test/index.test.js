@@ -110,6 +110,12 @@ describe('release-drafter', () => {
 
           nock('https://api.github.com')
             .post('/graphql', body =>
+              body.query.includes('query findTagCommitDate')
+            )
+            .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+          nock('https://api.github.com')
+            .post('/graphql', body =>
               body.query.includes('query findCommitsWithAssociatedPullRequests')
             )
             .reply(200, require('./fixtures/graphql-commits-no-prs.json'))
@@ -208,6 +214,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -262,6 +274,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -311,6 +329,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -350,6 +374,12 @@ Previous tag: ''
               '/repos/toolmantim/release-drafter-test-project/releases?per_page=100'
             )
             .reply(200, [require('./fixtures/release')])
+
+          nock('https://api.github.com')
+            .post('/graphql', body =>
+              body.query.includes('query findTagCommitDate')
+            )
+            .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
 
           nock('https://api.github.com')
             .post('/graphql', body =>
@@ -399,6 +429,12 @@ Previous tag: ''
 
           nock('https://api.github.com')
             .post('/graphql', body =>
+              body.query.includes('query findTagCommitDate')
+            )
+            .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+          nock('https://api.github.com')
+            .post('/graphql', body =>
               body.query.includes('query findCommitsWithAssociatedPullRequests')
             )
             .reply(
@@ -445,9 +481,16 @@ Previous tag: ''
           ])
 
         nock('https://api.github.com')
+          .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
           .post('/graphql', body => {
             expect(body.variables.since).toBe(
-              require('./fixtures/release-3').published_at
+              require('./fixtures/graphql-tag-v2.0.0').data.repository.object
+                .committedDate
             )
             return body.query.includes(
               'query findCommitsWithAssociatedPullRequests'
@@ -576,6 +619,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -625,6 +674,12 @@ Previous tag: ''
           .get('/repos/toolmantim/release-drafter-test-project/releases')
           .query(true)
           .reply(200, [require('./fixtures/release')])
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
 
         nock('https://api.github.com')
           .post('/graphql', body =>
@@ -798,6 +853,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -851,6 +912,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -891,6 +958,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(
@@ -928,6 +1001,12 @@ Previous tag: ''
           .get('/repos/toolmantim/release-drafter-test-project/releases')
           .query(true)
           .reply(200, [require('./fixtures/release')])
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
 
         nock('https://api.github.com')
           .post('/graphql', body =>
@@ -1421,6 +1500,12 @@ Previous tag: ''
 
       nock('https://api.github.com')
         .post('/graphql', body =>
+          body.query.includes('query findTagCommitDate')
+        )
+        .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+      nock('https://api.github.com')
+        .post('/graphql', body =>
           body.query.includes('query findCommitsWithAssociatedPullRequests')
         )
         .reply(200, require('./fixtures/graphql-commits-no-prs.json'))
@@ -1497,6 +1582,12 @@ Previous tag: ''
         .get('/repos/toolmantim/release-drafter-test-project/releases')
         .query(true)
         .reply(200, [require('./fixtures/release')])
+
+      nock('https://api.github.com')
+        .post('/graphql', body =>
+          body.query.includes('query findTagCommitDate')
+        )
+        .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
 
       nock('https://api.github.com')
         .post('/graphql', body =>
@@ -1652,6 +1743,12 @@ Previous tag: ''
 
         nock('https://api.github.com')
           .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
             body.query.includes('query findCommitsWithAssociatedPullRequests')
           )
           .reply(200, require('./fixtures/graphql-commits-no-prs.json'))
@@ -1721,6 +1818,12 @@ Previous tag: ''
     describe('with previous releases, no overrides', () => {
       it('resolves to the calculated version', async () => {
         getConfigMock('config-with-resolved-version-template.yml')
+
+        nock('https://api.github.com')
+          .post('/graphql', body =>
+            body.query.includes('query findTagCommitDate')
+          )
+          .reply(200, require('./fixtures/graphql-tag-v2.0.0'))
 
         nock('https://api.github.com')
           .post('/graphql', body =>
