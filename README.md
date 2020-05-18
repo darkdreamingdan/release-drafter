@@ -1,3 +1,12 @@
+## Custom branch
+
+This branch (darkdreamingdan/custom) is a merge of the two following branches, for use until these fixes are in the main repository:
+
+- fork: `mangolas/release-drafter`, branch: `fix/use-commit-date`
+- fork: `darkdreamingdan/release-drafter`, branch: `version-resolver`
+
+It is not indented to be merged into other branches.
+
 <h1 align="center">
   <img src="design/logo.svg" alt="Release Drafter Logo" width="450" />
 </h1>
@@ -107,7 +116,7 @@ You can configure Release Drafter using the following key in your `.github/relea
 | `sort-by`             | Optional | Sort changelog by merged_at or title. Can be one of: `merged_at`, `title`. Default: `merged_at`.                                                                                                                  |
 | `sort-direction`      | Optional | Sort changelog in ascending or descending order. Can be one of: `ascending`, `descending`. Default: `descending`.                                                                                                 |
 | `prerelease`          | Optional | Mark the draft release as pre-release. Default `false`.                                                                                                                                                           |
-| `version-resolver`    | Optional | Adjust the `$RESOLVED_VERSION` variable using labels. Refer to [Version Resolver](#version-resolver) to learn more about this                                                                                      |
+| `version-resolver`    | Optional | Adjust the `$RESOLVED_VERSION` variable using labels. Refer to [Version Resolver](#version-resolver) to learn more about this                                                                                     |
 
 Release Drafter also supports [Probot Config](https://github.com/probot/probot-config), if you want to store your configuration files in a central repository. This allows you to share configurations between projects, and create a organization-wide configuration file by creating a repository named `.github` with the file `.github/release-drafter.yml`.
 
